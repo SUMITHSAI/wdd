@@ -1,0 +1,29 @@
+set path=C:\java\jdk-1.8\bin
+
+cd C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\ROOT\WEB-INF\classes
+
+
+C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\ROOT\WEB-INF\classes>dir// option
+
+C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\ROOT\WEB-INF\classes>javac
+
+C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\ROOT\WEB-INF\classes>set classpath=C:\Program Files\Apache Software Foundation\Tomcat 8.5\lib\servlet-api.jar;///location of lib
+
+
+C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\ROOT\WEB-INF\classes>dir
+
+C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\ROOT\WEB-INF\classes>javac SimpleFormServlet.java
+
+
+then change the web xml file
+
+<servlet>  
+		<servlet-name>ServletName</servlet-name>  
+		<servlet-class>ServletName</servlet-class>  
+	</servlet>  
+	<servlet-mapping>  
+		<servlet-name>ServletName</servlet-name>  
+		<url-pattern>/ServletName</url-pattern>  
+	</servlet-mapping> 
+
+then stop the apache and start again
