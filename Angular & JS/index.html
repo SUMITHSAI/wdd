@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html ng-app="jobPortalApp">
+<head>
+    <title>Job Portal Registration</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body>
+    <div ng-controller="registrationController" class="container">
+        <h2>Job Portal Registration</h2>
+        <form name="registrationForm" ng-submit="submitForm()" novalidate>
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" ng-model="user.username" class="form-control" ng-pattern="/^[a-zA-Z]{6,}$/" required>
+                <span ng-show="registrationForm.username.$error.required" class="error-message">Username is required</span>
+                <span ng-show="registrationForm.username.$error.pattern" class="error-message">Username should contain at least 6 alphabetical characters</span>
+            </div>
+            <br>
+            <br>
+
+            <!-- <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" ng-model="user.email" class="form-control" required>
+                <span ng-show="registrationForm.email.$error.required" class="error-message">Email is required</span>
+                <span ng-show="registrationForm.email.$error.email" class="error-message">Invalid email address</span>
+            </div> -->
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" ng-model="user.email" class="form-control" ng-pattern="/@gmail\.com$/" required>
+                <span ng-show="registrationForm.email.$error.required" class="error-message">Email is required</span>
+                <span ng-show="registrationForm.email.$error.pattern" class="error-message">Email should contain '@gmail.com'</span>
+            </div>
+            <br>
+            <br>
+
+            <div class="form-group">
+                <label for="phoneNumber">Phone Number:</label>
+                <input type="tel" id="phoneNumber" name="phoneNumber" ng-model="user.phoneNumber" class="form-control" ng-pattern="/^\d{10}$/" required>
+                <span ng-show="registrationForm.phoneNumber.$error.required" class="error-message">Phone number is required</span>
+                <span ng-show="registrationForm.phoneNumber.$error.pattern" class="error-message">Phone number should be 10 digits long and contain only numbers</span>
+            </div>
+            <br>
+            <br>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" ng-model="user.password" class="form-control" ng-pattern="/^(?=.*[A-Z])(?=.*\W).{6,}$/" required>
+                <span ng-show="registrationForm.password.$error.required" class="error-message">Password is required</span>
+                <span ng-show="registrationForm.password.$error.pattern" class="error-message">Password must be at least 6 characters long and contain at least one uppercase letter and one special character</span>
+            </div>
+            <br>
+            <br>
+
+            <div class="form-group">
+                <label for="AadharNum">Aadhar Number:</label>
+                <input type="number" id="AadharNum" name="AadharNum" ng-model="user.AadharNum" class="form-control" ng-pattern="/^\d{12}$/" required>
+                <span ng-show="registrationForm.AadharNum.$error.required" class="error-message">Aadhar Number is required</span>
+                <span ng-show="registrationForm.AadharNum.$error.pattern" class="error-message">Aadhar number should be 12 digits long and contain only numbers</span>
+            </div>
+            <br>
+            <br>
+
+           
+
+            <button type="submit" ng-disabled="registrationForm.$invalid" class="btn btn-primary">Register</button>
+        </form>
+    </div>
+
+    <script>
+        var app = angular.module('jobPortalApp', []);
+        app.controller('registrationController', function($scope) {
+            $scope.user = {};
+
+            $scope.submitForm = function() {
+                if ($scope.registrationForm.$valid) {
+                    alert('Registration successful!');
+                    // Here you can send the form data to your backend for further processing
+                } else {
+                    alert('Please fill in all required fields correctly.');
+                }
+            };
+        });
+    </script>
+</body>
+</html>
